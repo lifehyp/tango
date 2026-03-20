@@ -1,0 +1,1588 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7주 끝장 심화 몰입반 — 고해상도 탱고</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #f5f3f0;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #2c2c2c;
+    line-height: 1.8;
+  }
+
+  .post-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 0 40px rgba(0,0,0,0.08);
+  }
+
+  /* ── 포스터 영역 ── */
+  .poster-area {
+    width: 100%;
+    background: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .poster-area img {
+    width: 730px;
+    height: 950px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .poster-placeholder {
+    width: 730px;
+    height: 950px;
+    background: linear-gradient(160deg, #1a1a1a 0%, #2d1f3d 40%, #4a1942 70%, #1a1a1a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .poster-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(212,175,55,0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .poster-placeholder .poster-label {
+    font-size: 13px;
+    letter-spacing: 6px;
+    color: #d4af37;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .poster-placeholder .poster-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 10px;
+  }
+
+  .poster-placeholder .poster-sub {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .poster-placeholder .poster-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+  }
+
+  .poster-placeholder .poster-note {
+    position: absolute;
+    bottom: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 1px;
+  }
+
+  /* ── 본문 공통 ── */
+  .content-body {
+    padding: 0 40px 60px;
+  }
+
+  /* ── 인트로 섹션 ── */
+  .intro-section {
+    padding: 56px 40px 48px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .intro-section .intro-badge {
+    display: inline-block;
+    background: #d4af37;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+  }
+
+  .intro-section h1 {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+  }
+
+  .intro-section h1 span {
+    color: #d4af37;
+  }
+
+  .intro-section .subtitle {
+    font-size: 16px;
+    color: #888;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .intro-section .style-ratio {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .style-ratio .ratio-item {
+    background: #f8f6f3;
+    border: 1px solid #e8e4df;
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 140px;
+  }
+
+  .ratio-item .ratio-label {
+    font-size: 13px;
+    color: #999;
+    font-weight: 400;
+  }
+
+  .ratio-item .ratio-value {
+    font-size: 22px;
+    font-weight: 900;
+    color: #d4af37;
+  }
+
+  .ratio-item .ratio-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 2px;
+  }
+
+  /* ── 공감 섹션 ── */
+  .empathy-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .empathy-section .section-eyebrow {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #d4af37;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .empathy-section h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 28px;
+    line-height: 1.5;
+    color: #1a1a1a;
+  }
+
+  .empathy-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .empathy-card {
+    background: #faf8f5;
+    border-left: 4px solid #d4af37;
+    padding: 20px 24px;
+    border-radius: 0 10px 10px 0;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .empathy-card strong {
+    color: #333;
+    font-style: normal;
+  }
+
+  .empathy-cta {
+    margin-top: 28px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #c0392b;
+    text-align: center;
+    padding: 16px;
+    background: #fdf2f0;
+    border-radius: 10px;
+  }
+
+  /* ── 고해상도 탱고란 섹션 ── */
+  .concept-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .concept-section h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+  }
+
+  .concept-section h2 span {
+    color: #d4af37;
+  }
+
+  .concept-box {
+    background: linear-gradient(135deg, #1a1a1a, #2d1f3d);
+    color: #fff;
+    padding: 36px 32px;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .concept-box::after {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: rgba(212,175,55,0.1);
+    border-radius: 50%;
+  }
+
+  .concept-box p {
+    font-size: 15px;
+    line-height: 2;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+  }
+
+  .concept-box p:last-child {
+    margin-bottom: 0;
+  }
+
+  .concept-box .highlight-text {
+    color: #d4af37;
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  /* ── 변화 섹션 ── */
+  .change-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .section-title {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #d4af37;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .change-section h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 32px;
+    color: #1a1a1a;
+    line-height: 1.5;
+  }
+
+  .change-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .change-card {
+    background: #faf8f5;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #efe9e1;
+    transition: transform 0.2s;
+  }
+
+  .change-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .change-card .change-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .change-card .change-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  .change-card .change-sub {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+  }
+
+  .change-card.full-width {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #d4af37, #c5a028);
+    border: none;
+    color: #fff;
+  }
+
+  .change-card.full-width .change-text {
+    color: #fff;
+    font-size: 16px;
+  }
+
+  .change-card.full-width .change-sub {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .change-note {
+    margin-top: 24px;
+    padding: 20px 24px;
+    background: #f0f7ff;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+    border: 1px solid #d6e8f7;
+  }
+
+  .change-note strong {
+    color: #2c6fbb;
+  }
+
+  /* ── 수업 원칙 ── */
+  .principle-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .principle-section h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 28px;
+    color: #1a1a1a;
+  }
+
+  .principle-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .principle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+  }
+
+  .principle-item .p-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    background: #1a1a1a;
+    color: #d4af37;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .principle-item .p-text {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .principle-item .p-text strong {
+    color: #1a1a1a;
+  }
+
+  /* ── 커리큘럼 ── */
+  .curriculum-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .curriculum-section h2 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+  }
+
+  .curriculum-section .cur-sub {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 36px;
+  }
+
+  .cur-block {
+    margin-bottom: 32px;
+  }
+
+  .cur-block-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #d4af37;
+  }
+
+  .cur-block-number {
+    width: 36px;
+    height: 36px;
+    background: #d4af37;
+    color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cur-block-title {
+    font-size: 19px;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+
+  .cur-items {
+    padding-left: 20px;
+  }
+
+  .cur-item {
+    padding: 10px 0 10px 16px;
+    border-left: 2px solid #efe9e1;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+
+  .cur-item strong {
+    color: #333;
+  }
+
+  .cur-item .arrow {
+    color: #d4af37;
+    font-weight: 700;
+  }
+
+  .cur-item .tag {
+    display: inline-block;
+    background: #f5f0e8;
+    color: #b8960c;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+
+  .cur-sub-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding-left: 16px;
+  }
+
+  /* ── 론다 최적화 ── */
+  .ronda-box {
+    background: #faf8f5;
+    border: 1px solid #efe9e1;
+    border-radius: 12px;
+    padding: 28px;
+    margin-top: 12px;
+  }
+
+  .ronda-box h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+
+  .ronda-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .ronda-list li {
+    font-size: 14px;
+    color: #555;
+    padding: 6px 0;
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .ronda-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+    font-size: 10px;
+    top: 9px;
+  }
+
+  /* ── 피구라 테이블 ── */
+  .figura-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .figura-table thead th {
+    background: #1a1a1a;
+    color: #d4af37;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+    letter-spacing: 1px;
+  }
+
+  .figura-table tbody td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #f0ece7;
+  }
+
+  .figura-table tbody tr:nth-child(odd) {
+    background: #fdfcfa;
+  }
+
+  .figura-table tbody tr:nth-child(even) {
+    background: #fff;
+  }
+
+  .figura-table .cat-name {
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  /* ── 강사 이력 ── */
+  .instructor-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .instructor-section h2 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 28px;
+    color: #1a1a1a;
+  }
+
+  .instructor-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 24px 16px;
+    background: #faf8f5;
+    border-radius: 12px;
+    border: 1px solid #efe9e1;
+  }
+
+  .stat-card .stat-number {
+    font-size: 28px;
+    font-weight: 900;
+    color: #d4af37;
+    line-height: 1.2;
+  }
+
+  .stat-card .stat-unit {
+    font-size: 14px;
+    color: #d4af37;
+    font-weight: 700;
+  }
+
+  .stat-card .stat-label {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .instructor-story {
+    background: linear-gradient(135deg, #1a1a1a, #2d1f3d);
+    color: #fff;
+    padding: 32px;
+    border-radius: 14px;
+    margin-top: 8px;
+  }
+
+  .instructor-story p {
+    font-size: 15px;
+    line-height: 2;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .instructor-story p:last-child {
+    margin-bottom: 0;
+    font-style: normal;
+    color: #d4af37;
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  .milonga-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  .milonga-stat {
+    text-align: center;
+    padding: 16px 10px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .milonga-stat .ms-flag {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .milonga-stat .ms-num {
+    font-size: 20px;
+    font-weight: 900;
+    color: #d4af37;
+  }
+
+  .milonga-stat .ms-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* ── 수강 안내 ── */
+  .enrollment-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .enrollment-section h2 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 32px;
+    color: #1a1a1a;
+    text-align: center;
+  }
+
+  .enroll-info {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .enroll-info-card {
+    flex: 1;
+    text-align: center;
+    padding: 24px 16px;
+    background: #faf8f5;
+    border-radius: 12px;
+    border: 1px solid #efe9e1;
+  }
+
+  .enroll-info-card .ei-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .enroll-info-card .ei-value {
+    font-size: 20px;
+    font-weight: 900;
+    color: #1a1a1a;
+  }
+
+  .enroll-info-card .ei-label {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+  }
+
+  /* ── 가격 테이블 ── */
+  .pricing-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pricing-card {
+    border: 1px solid #e8e4df;
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border: 2px solid #d4af37;
+    box-shadow: 0 8px 30px rgba(212,175,55,0.15);
+  }
+
+  .pricing-card.featured .pricing-badge {
+    position: absolute;
+    top: 0;
+    right: 24px;
+    background: #c0392b;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 0 0 8px 8px;
+    letter-spacing: 1px;
+  }
+
+  .pricing-header {
+    padding: 24px 28px 20px;
+    background: #fdfcfa;
+    border-bottom: 1px solid #f0ece7;
+  }
+
+  .pricing-card.featured .pricing-header {
+    background: linear-gradient(135deg, #d4af37, #c5a028);
+  }
+
+  .pricing-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #333;
+  }
+
+  .pricing-card.featured .pricing-name {
+    color: #fff;
+  }
+
+  .pricing-deadline {
+    font-size: 12px;
+    color: #999;
+    margin-top: 4px;
+  }
+
+  .pricing-card.featured .pricing-deadline {
+    color: rgba(255,255,255,0.8);
+  }
+
+  .pricing-body {
+    padding: 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .pricing-col {
+    text-align: center;
+  }
+
+  .pricing-col .pc-label {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 6px;
+  }
+
+  .pricing-col .pc-price {
+    font-size: 26px;
+    font-weight: 900;
+    color: #1a1a1a;
+  }
+
+  .pricing-col .pc-price .won {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .pricing-col .pc-note {
+    font-size: 11px;
+    color: #bbb;
+    margin-top: 4px;
+  }
+
+  .pricing-divider {
+    width: 1px;
+    height: 60px;
+    background: #eee;
+  }
+
+  .pricing-card.featured .pricing-col .pc-price {
+    color: #c0392b;
+  }
+
+  /* ── 오픈 수업 ── */
+  .open-class-section {
+    padding: 52px 0 44px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .open-class-box {
+    background: linear-gradient(135deg, #f0f7ff, #e8f4fd);
+    border: 2px dashed #a8d1f0;
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-align: center;
+  }
+
+  .open-class-box .oc-badge {
+    display: inline-block;
+    background: #2c6fbb;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .open-class-box h3 {
+    font-size: 22px;
+    font-weight: 900;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+
+  .open-class-box .oc-date {
+    font-size: 28px;
+    font-weight: 900;
+    color: #2c6fbb;
+    margin: 16px 0;
+  }
+
+  .open-class-box .oc-free {
+    display: inline-block;
+    background: #c0392b;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 900;
+    padding: 8px 28px;
+    border-radius: 8px;
+    margin: 12px 0;
+  }
+
+  .open-class-box .oc-note {
+    font-size: 13px;
+    color: #888;
+    margin-top: 16px;
+    line-height: 1.8;
+  }
+
+  .open-class-box .oc-note strong {
+    color: #c0392b;
+  }
+
+  .oc-benefit {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .oc-benefit strong {
+    color: #2c6fbb;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    padding: 52px 0 20px;
+  }
+
+  .cta-box {
+    background: linear-gradient(135deg, #1a1a1a, #2d1f3d, #4a1942);
+    color: #fff;
+    padding: 48px 36px;
+    border-radius: 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 120%, rgba(212,175,55,0.15) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-box .cta-limit {
+    display: inline-block;
+    background: #c0392b;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .cta-box h2 {
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .cta-box h2 span {
+    color: #d4af37;
+  }
+
+  .cta-box .cta-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 32px;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #d4af37;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: 900;
+    padding: 18px 48px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    position: relative;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .cta-button:hover {
+    background: #e6c44a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212,175,55,0.4);
+  }
+
+  .cta-contact {
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    position: relative;
+  }
+
+  /* ── 마무리 인용 ── */
+  .closing-quote {
+    text-align: center;
+    padding: 48px 40px 56px;
+    border-top: 1px solid #eee;
+  }
+
+  .closing-quote .quote-mark {
+    font-size: 48px;
+    color: #d4af37;
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .closing-quote p {
+    font-size: 17px;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.9;
+    font-style: italic;
+  }
+
+  .closing-quote p span {
+    color: #d4af37;
+    font-weight: 800;
+  }
+
+  /* ── 하단 라인 ── */
+  .bottom-line {
+    height: 4px;
+    background: linear-gradient(90deg, #d4af37, #1a1a1a, #d4af37);
+  }
+
+  /* ── 반응형 ── */
+  @media (max-width: 760px) {
+    .post-wrapper {
+      max-width: 100%;
+    }
+    .poster-placeholder,
+    .poster-area img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 730/950;
+    }
+    .intro-section,
+    .content-body {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .style-ratio {
+      flex-direction: column;
+      align-items: center;
+    }
+    .change-grid {
+      grid-template-columns: 1fr;
+    }
+    .instructor-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .milonga-stats {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .enroll-info {
+      flex-direction: column;
+    }
+    .pricing-body {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pricing-divider {
+      width: 60%;
+      height: 1px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="post-wrapper">
+
+  <!-- ═══════════ 포스터 영역 ═══════════ -->
+  <div class="poster-area">
+    <!-- 실제 사용 시 아래 주석을 해제하고 img 태그 사용 -->
+    <!-- <img src="poster.jpg" alt="7주 끝장 심화 몰입반 포스터"> -->
+
+    <!-- 포스터 플레이스홀더 (실제 이미지로 교체) -->
+    <div class="poster-placeholder">
+      <div class="poster-label">7 WEEKS INTENSIVE PROGRAM</div>
+      <div class="poster-title">HIGH-DEFINITION</div>
+      <div class="poster-sub">고해상도 탱고</div>
+      <div class="poster-desc">7주 끝장 심화 몰입반</div>
+      <div class="poster-note">▲ 이 영역에 730×950px 포스터 이미지가 배치됩니다</div>
+    </div>
+  </div>
+
+  <!-- ═══════════ 인트로 ═══════════ -->
+  <div class="intro-section">
+    <div class="intro-badge">7 WEEKS INTENSIVE</div>
+    <h1>7주 끝장 심화 몰입반<br><span>"고해상도 탱고"</span></h1>
+    <div class="subtitle">매회 90분 수업 + 90분 집중 트레이닝 · 총 21시간 몰입</div>
+    <div class="style-ratio">
+      <div class="ratio-item">
+        <div class="ratio-value">50%</div>
+        <div class="ratio-name">밀롱게로</div>
+        <div class="ratio-label">Milonguero</div>
+      </div>
+      <div class="ratio-item">
+        <div class="ratio-value">30%</div>
+        <div class="ratio-name">누에보</div>
+        <div class="ratio-label">Nuevo</div>
+      </div>
+      <div class="ratio-item">
+        <div class="ratio-value">20%</div>
+        <div class="ratio-name">에세나리오</div>
+        <div class="ratio-label">Escenario</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-body">
+
+    <!-- ═══════════ 공감 섹션 ═══════════ -->
+    <div class="empathy-section">
+      <div class="section-eyebrow">CHECK YOURSELF</div>
+      <h2>혹시 이런 경험, 있으신가요?</h2>
+      <div class="empathy-cards">
+        <div class="empathy-card">
+          "배운 건 많은데, <strong>밀롱가에서 막상 쓰려면 막힌다.</strong>"
+        </div>
+        <div class="empathy-card">
+          "피구라는 아는데, <strong>왜 자연스럽지 않을까?</strong>"
+        </div>
+        <div class="empathy-card">
+          "내 탱고가 <strong>정체된 느낌</strong>… 뭘 더 해야 할지 모르겠다."
+        </div>
+        <div class="empathy-card">
+          "좁은 론다에서 <strong>하고 싶은 동작을 할 수가 없다.</strong>"
+        </div>
+        <div class="empathy-card">
+          "커넥션이 뭔지 알 것 같은데, <strong>정확히 뭘 해야 하는지 모르겠다.</strong>"
+        </div>
+      </div>
+      <div class="empathy-cta">
+        하나라도 해당된다면, 이 수업이 <strong>전환점</strong>이 됩니다.
+      </div>
+    </div>
+
+    <!-- ═══════════ 고해상도 탱고란 ═══════════ -->
+    <div class="concept-section">
+      <h2><span>"고해상도 탱고"</span>란?</h2>
+      <div class="concept-box">
+        <p>같은 동작도 <strong>해상도가 다르면 차원이 달라집니다.</strong></p>
+        <p>저화질 영상과 고화질 영상의 차이처럼,<br>
+        기본기 하나, 걷기 하나에도 <strong>보이지 않던 디테일</strong>이 존재합니다.</p>
+        <p>이 수업은 그 디테일을 <strong>선명하게 꺼내드리는</strong> 7주입니다.</p>
+        <p class="highlight-text">해상도 높은 베이직을 이해하면,<br>
+        밀롱게로에서 누에보, 공연용 탱고까지 — 모든 스타일로 확장됩니다.<br>
+        밀롱가에서도 차원이 다른 탱고가 됩니다.</p>
+      </div>
+    </div>
+
+    <!-- ═══════════ 7주 후 변화 ═══════════ -->
+    <div class="change-section">
+      <div class="section-title">AFTER 7 WEEKS</div>
+      <h2>7주 후, 당신에게 일어나는 변화</h2>
+      <div class="change-grid">
+        <div class="change-card">
+          <div class="change-icon">🔄</div>
+          <div class="change-text">완전히 변환된<br>나의 탱고를 발견</div>
+        </div>
+        <div class="change-card">
+          <div class="change-icon">📈</div>
+          <div class="change-text">지금보다<br>3단계 이상 레벨업</div>
+        </div>
+        <div class="change-card">
+          <div class="change-icon">🔍</div>
+          <div class="change-text">초급~고급 레벨<br>모든 디테일 이해</div>
+        </div>
+        <div class="change-card">
+          <div class="change-icon">🎓</div>
+          <div class="change-text">명확한 포인트로<br>티칭까지 가능</div>
+        </div>
+        <div class="change-card full-width">
+          <div class="change-icon">💃</div>
+          <div class="change-text">궁극의 목표 — 밀롱가에서 진정한 탱고를 즐기는 실력</div>
+          <div class="change-sub">그러면서 동시에 다른 스타일의 탱고도 함께할 수 있는 확장성</div>
+        </div>
+      </div>
+      <div class="change-note">
+        <strong>💡 "7주 만에 가능할까?"</strong><br>
+        매회 90분 수업 + 90분 집중 트레이닝, 총 <strong>21시간의 압축 몰입</strong>.<br>
+        흩어져 있던 당신의 탱고 지식이 <strong>하나로 연결되는 경험</strong>을 하게 됩니다.
+      </div>
+    </div>
+
+    <!-- ═══════════ 수업 원칙 ═══════════ -->
+    <div class="principle-section">
+      <div class="section-title">OUR PRINCIPLE</div>
+      <h2>수업의 4가지 원칙</h2>
+      <div class="principle-list">
+        <div class="principle-item">
+          <div class="p-icon">01</div>
+          <div class="p-text">모든 동작은 <strong>상식적인 원리와 개념</strong>에서 출발합니다.</div>
+        </div>
+        <div class="principle-item">
+          <div class="p-icon">02</div>
+          <div class="p-text">억지스럽거나, 부자연스럽거나, <strong>비합리적인 몸 사용은 절대 없습니다.</strong></div>
+        </div>
+        <div class="principle-item">
+          <div class="p-icon">03</div>
+          <div class="p-text">서로 짜고 치는 동작은 <strong>가르치지 않습니다.</strong></div>
+        </div>
+        <div class="principle-item">
+          <div class="p-icon">04</div>
+          <div class="p-text"><strong>하나의 원리로 모든 스타일을 관통</strong>할 수 있어야 합니다.<br>원리를 이해하면, 어떤 스타일이든 자연스럽게 확장됩니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 커리큘럼 ═══════════ -->
+    <div class="curriculum-section">
+      <div class="section-title">CURRICULUM</div>
+      <h2>커리큘럼</h2>
+      <div class="cur-sub">7주간 다루는 핵심 내용을 소개합니다</div>
+
+      <!-- 1. 서는 법 -->
+      <div class="cur-block">
+        <div class="cur-block-header">
+          <div class="cur-block-number">1</div>
+          <div class="cur-block-title">서는 법</div>
+        </div>
+        <div class="cur-items">
+          <div class="cur-item"><strong>11초 스캔 — 11가지 체크 포인트</strong>로 당신의 자세를 진단합니다</div>
+          <div class="cur-item">단 11초 만에 서 있는 자세의 문제점과 교정 포인트를 파악할 수 있습니다</div>
+        </div>
+      </div>
+
+      <!-- 2. 걷는 법 -->
+      <div class="cur-block">
+        <div class="cur-block-header">
+          <div class="cur-block-number">2</div>
+          <div class="cur-block-title">걷는 법</div>
+        </div>
+        <div class="cur-sub-title">▸ 직선으로 걷기</div>
+        <div class="cur-items">
+          <div class="cur-item">좌우로 걷기, 앞뒤로 걷기 <span class="arrow">→</span> 응용 : <strong>꼬르따도(Cortado)</strong></div>
+        </div>
+        <div class="cur-sub-title">▸ 곡선으로 걷기</div>
+        <div class="cur-items">
+          <div class="cur-item">오초 포워드, 오초 백워드 <span class="arrow">→</span> 응용 : <strong>사까다(Sacada)</strong></div>
+        </div>
+        <div class="cur-sub-title">▸ 남녀 걷기의 차이</div>
+        <div class="cur-items">
+          <div class="cur-item"><strong>"무수리 걷기"와 "여왕처럼 걷는 법"</strong> — 그 차이를 몸으로 체감합니다</div>
+        </div>
+        <div class="cur-sub-title">▸ 다양한 걷기 변주</div>
+        <div class="cur-items">
+          <div class="cur-item">나란히 걷기, 엇갈려 걷기</div>
+          <div class="cur-item"><strong>꼰뜨라 띠엠뽀(Contratiempo)</strong>와 <strong>밀롱가 콘 트라스삐에(Traspié)</strong> 걷기</div>
+        </div>
+        <div class="cur-sub-title">▸ 모든 탱고 스타일에 적용되는 고급 걷기</div>
+        <div class="cur-items">
+          <div class="cur-item">밀롱가에서부터 누에보, 공연용 탱고까지 <strong>확장 가능한 고급반 걷기 포인트</strong> <span class="tag">고급</span></div>
+        </div>
+      </div>
+
+      <!-- 3. 아브라쏘 -->
+      <div class="cur-block">
+        <div class="cur-block-header">
+          <div class="cur-block-number">3</div>
+          <div class="cur-block-title">아브라쏘 (Abrazo)</div>
+        </div>
+        <div class="cur-items">
+          <div class="cur-item"><strong>쎄라도(Cerrado) · 아비에르또(Abierto)</strong> 아브라쏘의 정확한 이해와 구체적 체크 포인트</div>
+          <div class="cur-item">고급 레벨에서 사용하는 <strong>아브라쏘와 커넥션</strong> 방법 <span class="tag">고급</span></div>
+          <div class="cur-item">아브라쏘 시 리더와 팔로워가 <strong>10초 이내에 해야 할 것</strong></div>
+          <div class="cur-item"><strong>"무수리 아브라쏘"와 "여왕 아브라쏘"</strong>의 차이점</div>
+          <div class="cur-item">밀롱가에서 만나는 <strong>천차만별의 아브라쏘에 대응</strong>하는 법</div>
+        </div>
+      </div>
+
+      <!-- 4. 핵심 테크닉 -->
+      <div class="cur-block">
+        <div class="cur-block-header">
+          <div class="cur-block-number">4</div>
+          <div class="cur-block-title">핵심 테크닉</div>
+        </div>
+        <div class="cur-items">
+          <div class="cur-item"><strong>끄루세(Cruce)</strong> — 아바호 · 미디오 · 아리바, 그리고 확장된 응용 끄루세 피구라</div>
+          <div class="cur-item"><strong>볼레오(Voleo)</strong> — 고급 볼레오의 이해 · 실행법 · 활용법 <span class="tag">고급</span></div>
+          <div class="cur-item"><strong>깐쵸(Gancho)</strong> — 고급 깐쵸의 이해 · 실행법 · 응용법 <span class="tag">고급</span></div>
+          <div class="cur-item"><strong>미디오 루나(Media Luna)</strong> — 호흡으로 리드 / 디소시에이션으로 축 강화 / 코어로 리드</div>
+          <div class="cur-item"><strong>히로(Giro)</strong> — 밀롱가용(론다 공간 안에서) + 살롱 · 공연용 히로</div>
+          <div class="cur-item"><strong>아도르노(Adorno)</strong> — 고급 레벨 포함 <span class="tag">고급</span></div>
+        </div>
+      </div>
+
+      <!-- 5. 론다 -->
+      <div class="cur-block">
+        <div class="cur-block-header">
+          <div class="cur-block-number">5</div>
+          <div class="cur-block-title">론다 (Ronda) 의 올바른 이해</div>
+        </div>
+        <div class="cur-items">
+          <div class="cur-item"><strong>뮤직 퀄리티</strong>와 론다의 관계</div>
+          <div class="cur-item"><strong>론다와 까베세오(Cabeceo)</strong>의 상관관계</div>
+        </div>
+
+        <div class="ronda-box">
+          <h4>✦ 론다에 최적화된 춤이란?</h4>
+          <ul class="ronda-list">
+            <li>서로의 <strong>중심을 해치지 않는</strong> 법</li>
+            <li>서로의 <strong>에너지를 최대한 보존</strong>하는 법</li>
+            <li>공간을 많이 <strong>차지하지 않는</strong> 법</li>
+            <li>좁은 공간에서도 <strong>효율적으로</strong> 추는 이유와 방법</li>
+            <li>주위 커플들에게 <strong>피해를 주지 않으면서도</strong></li>
+            <li>어떤 상황(공간이 없는 상황)에서도 <strong>표현하고 싶은 피구라를 해낼 수 있습니다</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. 피구라 -->
+      <div class="cur-block">
+        <div class="cur-block-header">
+          <div class="cur-block-number">6</div>
+          <div class="cur-block-title">피구라 (Figura) 구성</div>
+        </div>
+        <table class="figura-table">
+          <thead>
+            <tr>
+              <th>카테고리</th>
+              <th>설명</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-name">밀롱가 전용</td>
+              <td>론다 안에서 자연스럽게 쓸 수 있는 피구라</td>
+            </tr>
+            <tr>
+              <td class="cat-name">밀롱가 + 누에보 겸용</td>
+              <td>스타일의 경계를 넘나드는 피구라</td>
+            </tr>
+            <tr>
+              <td class="cat-name">밀롱가 + 누에보 + 공연용</td>
+              <td>무대에서도 활용 가능한 피구라</td>
+            </tr>
+            <tr>
+              <td class="cat-name">누에보 전용</td>
+              <td>누에보 탱고에 특화된 피구라</td>
+            </tr>
+            <tr>
+              <td class="cat-name">공연 전용</td>
+              <td>에세나리오를 위한 피구라</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════ 강사 이력 ═══════════ -->
+    <div class="instructor-section">
+      <div class="section-title">INSTRUCTOR</div>
+      <h2>왜 이 수업이어야 하는가</h2>
+
+      <div class="instructor-stats">
+        <div class="stat-card">
+          <div class="stat-number">20<span class="stat-unit">회+</span></div>
+          <div class="stat-label">아르헨티나<br>방문</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">300<span class="stat-unit">회+</span></div>
+          <div class="stat-label">현지 탱고<br>레슨 수강</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10<span class="stat-unit">년</span></div>
+          <div class="stat-label">백제예술대학교<br>탱고 강의</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">21<span class="stat-unit">년</span></div>
+          <div class="stat-label">밀롱가<br>경험</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">7,300<span class="stat-unit">회+</span></div>
+          <div class="stat-label">전세계<br>밀롱가 출입</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2004<span class="stat-unit">~</span></div>
+          <div class="stat-label">아르헨티나에서<br>탱고 시작</div>
+        </div>
+      </div>
+
+      <div class="instructor-story">
+        <p>2004년, 아르헨티나에서 기초부터 탱고를 시작했습니다.</p>
+        <p>말도 통하지 않는 부에노스아이레스에서<br>
+        현지 땅게라를 섭외하고, 통역을 불러<br>
+        개인 레슨을 듣고, 함께 연습하던 시간들.</p>
+        <p>그 모든 시행착오와 깨달음이<br>이 7주에 담겨 있습니다.</p>
+
+        <div class="milonga-stats">
+          <div class="milonga-stat">
+            <div class="ms-flag">🇦🇷</div>
+            <div class="ms-num">~5,000회</div>
+            <div class="ms-label">아르헨티나 밀롱가</div>
+          </div>
+          <div class="milonga-stat">
+            <div class="ms-flag">🇰🇷</div>
+            <div class="ms-num">~2,300회</div>
+            <div class="ms-label">한국 밀롱가</div>
+          </div>
+          <div class="milonga-stat">
+            <div class="ms-flag">🌏</div>
+            <div class="ms-num">50여 회</div>
+            <div class="ms-label">기타 해외</div>
+          </div>
+        </div>
+
+        <p style="margin-top:28px;">이 모든 노하우를 7주 안에 전부 전수합니다.</p>
+      </div>
+    </div>
+
+    <!-- ═══════════ 수강 안내 ═══════════ -->
+    <div class="enrollment-section">
+      <div class="section-title" style="text-align:center;">ENROLLMENT</div>
+      <h2>수강 안내</h2>
+
+      <div class="enroll-info">
+        <div class="enroll-info-card">
+          <div class="ei-icon">👥</div>
+          <div class="ei-value">6커플</div>
+          <div class="ei-label">선착순 · 소수 정예</div>
+        </div>
+        <div class="enroll-info-card">
+          <div class="ei-icon">⏱</div>
+          <div class="ei-value">3시간</div>
+          <div class="ei-label">매회 (90분 수업 + 90분 트레이닝)</div>
+        </div>
+        <div class="enroll-info-card">
+          <div class="ei-icon">📅</div>
+          <div class="ei-value">7주</div>
+          <div class="ei-label">총 과정 기간</div>
+        </div>
+      </div>
+
+      <!-- 가격 -->
+      <div class="pricing-cards">
+        <!-- 얼리버드 (추천) -->
+        <div class="pricing-card featured">
+          <div class="pricing-badge">⚡ 최저가 · 추천</div>
+          <div class="pricing-header">
+            <div class="pricing-name">🔥 얼리버드</div>
+            <div class="pricing-deadline">신청 마감 : 4월 7일</div>
+          </div>
+          <div class="pricing-body">
+            <div class="pricing-col">
+              <div class="pc-label">개인 신청</div>
+              <div class="pc-price">20<span class="won">만 원</span></div>
+            </div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-col">
+              <div class="pc-label">커플 동반 시 (1인)</div>
+              <div class="pc-price">18<span class="won">만 원</span></div>
+              <div class="pc-note">커플 합계 36만 원</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 오픈수업 후 신청 -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-name">🎁 오픈수업 후 당일 신청</div>
+            <div class="pricing-deadline">신청 마감 : 4월 16일</div>
+          </div>
+          <div class="pricing-body">
+            <div class="pricing-col">
+              <div class="pc-label">개인 신청</div>
+              <div class="pc-price">25<span class="won">만 원</span></div>
+            </div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-col">
+              <div class="pc-label">커플 동반 시 (1인)</div>
+              <div class="pc-price">23<span class="won">만 원</span></div>
+              <div class="pc-note">커플 합계 46만 원</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 일반 신청 -->
+        <div class="pricing-card">
+          <div class="pricing-header">
+            <div class="pricing-name">일반 신청</div>
+            <div class="pricing-deadline">신청 마감 : 4월 20일</div>
+          </div>
+          <div class="pricing-body">
+            <div class="pricing-col">
+              <div class="pc-label">개인 신청</div>
+              <div class="pc-price">28<span class="won">만 원</span></div>
+            </div>
+            <div class="pricing-divider"></div>
+            <div class="pricing-col">
+              <div class="pc-label">커플 동반 시 (1인)</div>
+              <div class="pc-price">25<span class="won">만 원</span></div>
+              <div class="pc-note">커플 합계 50만 원</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 무료 오픈 수업 ═══════════ -->
+    <div class="open-class-section">
+      <div class="open-class-box">
+        <div class="oc-badge">OPEN CLASS</div>
+        <h3>수업 분위기를 먼저 체험해 보세요</h3>
+        <div class="oc-date">4월 15일 (수)</div>
+        <div class="oc-free">무 료</div>
+        <div class="oc-note">
+          ※ <strong>파트너 동반 필수</strong> (오픈 수업에 한함)<br>
+          수업 분위기와 강사의 티칭 스타일을 <strong>직접 체험</strong>해보신 후 결정하실 수 있습니다.
+        </div>
+        <div class="oc-benefit">
+          💡 오픈 수업 참가 후 <strong>당일 신청 시 10% 할인</strong> 적용
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ CTA ═══════════ -->
+    <div class="cta-section">
+      <div class="cta-box">
+        <div class="cta-limit">⚠️ 선착순 6커플 한정</div>
+        <h2>지금 <span>액션</span>해 주세요</h2>
+        <div class="cta-sub">
+          자리가 채워지면 다음 기수를 기다리셔야 합니다.<br>
+          7주 후, 당신의 탱고가 완전히 달라집니다.
+        </div>
+        <a href="#" class="cta-button">📩 수강 신청하기</a>
+        <div class="cta-contact">
+          문의 : 카카오톡 / 전화 000-0000-0000
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-body -->
+
+  <!-- ═══════════ 마무리 인용 ═══════════ -->
+  <div class="closing-quote">
+    <div class="quote-mark">"</div>
+    <p>탱고는 <span>하나의 원리</span>로<br>
+    모든 스타일을 관통할 수 있어야 합니다.<br><br>
+    7주 후, 당신의 탱고가<br>
+    <span>완전히 달라집니다.</span></p>
+  </div>
+
+  <div class="bottom-line"></div>
+
+</div><!-- /post-wrapper -->
+
+</body>
+</html>
+```
