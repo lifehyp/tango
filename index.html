@@ -1212,7 +1212,11 @@
           수강 신청하기
         </a>
 
-        <p class="relative mt-4 text-[12px] text-white/38 sm:mt-6 sm:text-sm">문의 : 카카오톡 / 전화 000-0000-0000</p>
+        <p class="relative mt-4 text-[12px] text-white/38 sm:mt-6 sm:text-sm">
+          문의 : <a href="https://open.kakao.com/o/sdiifJRf" target="_blank"
+            class="text-gold underline decoration-gold/30 underline-offset-4 hover:text-white transition-colors">카카오 1:1
+            채팅방</a>
+        </p>
       </div>
     </section>
 
@@ -1233,6 +1237,18 @@
     </section>
 
   </main>
+  
+  <!-- Floating Kakao Chat Button -->
+  <a href="https://open.kakao.com/o/sdiifJRf" target="_blank"
+     class="fixed bottom-6 right-6 z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-[#FEE500] shadow-xl shadow-black/20 transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#FBE100] sm:bottom-8 sm:right-8 sm:h-16 sm:w-16">
+    <svg class="h-8 w-8 text-[#3C1E1E] sm:h-9 sm:w-9" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M12 3C6.47715 3 2 6.47715 2 10.75C2 13.3857 3.73147 15.6948 6.33333 17.1132L5.23413 21.1275C5.15174 21.4285 5.48514 21.6811 5.75345 21.5034L10.4578 18.3973C10.9602 18.4654 11.4746 18.5 12 18.5C17.5228 18.5 22 15.0228 22 10.75C22 6.47715 17.5228 3 12 3Z"/>
+    </svg>
+    <div class="absolute -top-10 right-0 hidden whitespace-nowrap rounded-lg bg-ink px-3 py-1.5 text-[11px] font-bold text-white shadow-lg sm:block group-hover:block animate-bounce-slow">
+      무엇이든 물어보세요!
+      <div class="absolute -bottom-1.5 right-6 h-3 w-3 rotate-45 bg-ink"></div>
+    </div>
+  </a>
 </body>
 
 </html>
