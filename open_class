@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오픈 수업 안내 - 고해상도 탱고</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap">
+    <style>
+        /* ── Base Styles ── */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #2c2c2c;
+            line-height: 1.8;
+            background-color: #faf8f5;
+        }
+        .wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 0 50px rgba(0,0,0,0.05);
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('welcome_bg.jpg') center/cover;
+            background-color: #1a1a1a;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+        }
+        .hero-label {
+            font-size: 14px;
+            letter-spacing: 5px;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            color: #d4af37;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        .hero .sub {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* ── Welcome Content ── */
+        .welcome-content {
+            padding: 60px 40px;
+            text-align: center;
+        }
+        .welcome-content h2 {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+        .welcome-content p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* ── Highlights ── */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .highlight-item {
+            background: #fdfcfa;
+            border: 1px solid #efe9e1;
+            padding: 30px 20px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+        .highlight-item:hover {
+            transform: translateY(-5px);
+        }
+        .icon { font-size: 32px; margin-bottom: 15px; display: block; }
+        .h-title { font-weight: 800; color: #1a1a1a; margin-bottom: 10px; display: block; }
+        .h-desc { font-size: 13px; color: #888; }
+
+        /* ── Practical Info ── */
+        .info-section {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 60px 40px;
+            border-radius: 30px 30px 0 0;
+        }
+        .info-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+        .info-card h3 {
+            color: #d4af37;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+            padding-bottom: 10px;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .info-row .label { width: 80px; color: #999; flex-shrink: 0; }
+        .info-row .value { color: #fff; font-weight: 500; }
+
+        /* ── Map Button ── */
+        .map-btn {
+            display: block;
+            background: #d4af37;
+            color: #1a1a1a;
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .map-btn:hover { background: #c5a028; }
+
+        /* ── Checklist ── */
+        .checklist {
+            text-align: left;
+            margin-top: 40px;
+        }
+        .checklist h4 { color: #d4af37; margin-bottom: 15px; font-size: 16px; }
+        .checklist ul { list-style: none; }
+        .checklist li {
+            padding-left: 25px;
+            position: relative;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #bbb;
+        }
+        .checklist li::before {
+            content: '✓';
+            position: absolute; left: 0; color: #d4af37; font-weight: bold;
+        }
+
+        /* ── Footer Link ── */
+        .footer-cta {
+            padding: 60px 40px;
+            text-align: center;
+            background: #fff;
+        }
+        .footer-cta p { font-size: 14px; color: #999; margin-bottom: 20px; }
+        .main-link {
+            color: #d4af37;
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 36px; }
+            .highlight-grid { grid-template-columns: 1fr; }
+            .welcome-content { padding: 40px 20px; }
+            .info-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- ═══════════ Hero ═══════════ -->
+        <header class="hero">
+            <div class="hero-label">High-Definition Tango</div>
+            <h1>Open Class</h1>
+            <div class="sub">오픈 수업 안내</div>
+            <p style="color: rgba(255,255,255,0.6); max-width: 400px;">흩어져 있던 당신의 탱고 지식이 하나로 연결되는 첫 경험</p>
+        </header>
+
+        <!-- ═══════════ Welcome ═══════════ -->
+        <section class="welcome-content">
+            <h2>반갑습니다!</h2>
+            <p>고해상도 탱고 오픈 수업에 신청해주셔서 감사합니다.<br>내일 진행될 수업에서 당신의 탱고가 선명해지는 기적을 직접 확인해보세요.</p>
+            
+            <div class="highlight-grid">
+                <div class="highlight-item">
+                    <span class="icon">🔍</span>
+                    <span class="h-title">10초 스캔</span>
+                    <span class="h-desc">단 10초 만에 자세의 문제점과 교정 포인트를 진단합니다.</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="icon">👑</span>
+                    <span class="h-title">여왕의 걷기</span>
+                    <span class="h-desc">'무수리 걷기'와 '여왕처럼 걷기'의 차이를 몸으로 체감합니다.</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="icon">🤝</span>
+                    <span class="h-title">아브라쏘 튜닝</span>
+                    <span class="h-desc">상대방과 10초 이내에 가장 편안한 연결을 만드는 법.</span>
+                </div>
+                <div class="highlight-item">
+                    <span class="icon">🔄</span>
+                    <span class="h-title">원리의 통합</span>
+                    <span class="h-desc">밀롱게로에서 누에보까지 관통하는 하나의 원리.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ Practical Info ═══════════ -->
+        <section class="info-section">
+            <div class="info-card">
+                <h3>📍 일시 및 장소</h3>
+                <div class="info-row">
+                    <span class="label">일시</span>
+                    <span class="value">4월 15일 (수) {신청세션}</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">장소</span>
+                    <span class="value">서울시 마포구 서교동 345-21, B1</span>
+                </div>
+                <a href="https://map.naver.com/v5/search/%EC%84%9C%EC%9A%B8%EC%8B%9C%20%EB%A7%88%ED%8F%AC%EA%B5%AC%20%EC%84%9C%EA%B5%90%EB%8F%99%20345-21" class="map-btn" target="_blank">네이버 지도에서 보기</a>
+            </div>
+
+            <div class="checklist">
+                <h4>✨ 체크리스트</h4>
+                <ul>
+                    <li>오픈 수업은 <strong>파트너 동반이 필수</strong>입니다.</li>
+                    <li>개인 탱고 슈즈와 편안한 복장을 지참해 주세요.</li>
+                    <li>수업 10분 전까지 도착해 주시면 원활한 진행이 가능합니다.</li>
+                    <li>당일 등록 시 수강료 <strong>10% 할인 혜택</strong>을 드립니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ═══════════ Footer ═══════════ -->
+        <footer class="footer-cta">
+            <p>오픈 수업 이후 진행되는 정규 7주 과정이 궁금하신가요?</p>
+            <a href="index.html" class="main-link">7주 끝장 심화 몰입반 상세 보기 →</a>
+            <div style="margin-top: 40px; font-size: 12px; color: #ddd; letter-spacing: 1px;">
+                &copy; HIGH-DEFINITION TANGO
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
