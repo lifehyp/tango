@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>커리큘럼 | 고해상도 탱고 (High-Definition Tango)</title>
-    <meta name="description" content="7주 끝장 심화 몰입반 '고해상도 탱고'의 상세 커리큘럼을 확인하세요. 기본기부터 고급 테크닉까지, 당신의 탱고를 고해상도로 만들어 드립니다.">
+    <meta name="description" content="'고해상도 탱고'의 상세 커리큘럼을 확인하세요. 기본기부터 고급 테크닉까지, 당신의 탱고를 고해상도로 만들어 드립니다.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -37,7 +40,10 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
         }
@@ -244,7 +250,7 @@
 
         .cur-block:hover {
             border-color: var(--gold-primary);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .cur-header {
@@ -523,18 +529,194 @@
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
         }
 
+        /* --- Mind Map & Hierarchical Layout --- */
+        .mind-map-container {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .mind-map-img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--surface-accent);
+        }
+
+        .hierarchy-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-top: 40px;
+        }
+
+        .hierarchy-level {
+            position: relative;
+            padding-left: 40px;
+            border-left: 2px solid var(--gold-primary);
+        }
+
+        .hierarchy-level::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--gold-primary);
+            border-radius: 50%;
+        }
+
+        .hierarchy-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--gold-primary);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hierarchy-title span {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .branch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .branch-card {
+            background: var(--surface-color);
+            padding: 32px;
+            border-radius: 20px;
+            border: 1px solid var(--surface-accent);
+            transition: all 0.3s ease;
+        }
+
+        .branch-card:hover {
+            border-color: var(--gold-primary);
+            background: var(--surface-accent);
+        }
+
+        .branch-card h4 {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .branch-card h4 .lang-tag {
+            font-size: 12px;
+            color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .sub-branch {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sub-item {
+            font-size: 15px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sub-item::before {
+            content: '→';
+            color: var(--gold-primary);
+            font-weight: 800;
+        }
+
+        /* --- Technical Cards --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+        }
+
+        .tech-term {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--gold-primary);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .tech-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
         /* --- Responsive --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 40px; }
-            .ratio-grid { grid-template-columns: 1fr; }
-            .outcome-grid { grid-template-columns: 1fr; }
-            .cur-header { padding: 30px; flex-direction: column; text-align: center; }
-            .cur-content { padding: 30px; }
-            .instructor-preview { flex-direction: column; padding: 40px; text-align: center; }
-            .ronda-grid { grid-template-columns: 1fr; }
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .ratio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .outcome-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cur-header {
+                padding: 30px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cur-content {
+                padding: 30px;
+            }
+
+            .instructor-preview {
+                flex-direction: column;
+                padding: 40px;
+                text-align: center;
+            }
+
+            .ronda-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
@@ -542,21 +724,23 @@
         <header class="hero" data-aos="fade-up">
             <span class="hero-label">7 Weeks Intensive Program</span>
             <h1><span>고해상도 탱고</span>High-Definition</h1>
-            <p class="hero-desc">단 7주, 21시간의 압축 몰입으로 당신의 탱고 지식을 하나로 연결하고 실전 밀롱가 실력을 3단계 이상 끌어올립니다.</p>
-            
+            <p class="hero-desc">
+                기존 탱고 장르를 하나로 연결하고 <br>
+                더불어 실전 밀롱가 실력을 3단계 이상 끌어올립니다.</p>
+
             <div class="ratio-grid">
                 <div class="ratio-card">
-                    <div class="ratio-value">50%</div>
+                    <div class="ratio-value">70%</div>
                     <div class="ratio-name">밀롱게로</div>
                     <div class="ratio-label">Milonguero</div>
                 </div>
                 <div class="ratio-card">
-                    <div class="ratio-value">30%</div>
+                    <div class="ratio-value">20%</div>
                     <div class="ratio-name">누에보</div>
                     <div class="ratio-label">Nuevo</div>
                 </div>
                 <div class="ratio-card">
-                    <div class="ratio-value">20%</div>
+                    <div class="ratio-value">10%</div>
                     <div class="ratio-name">에세나리오</div>
                     <div class="ratio-label">Escenario</div>
                 </div>
@@ -606,142 +790,82 @@
             <div class="section-header">
                 <span class="hero-label">Syllabus</span>
                 <h2 class="section-title">상세 <span>커리큘럼</span></h2>
-                <p class="section-subtitle">기본기부터 고급 응용까지, 단계별 고해상도 학습</p>
+                <p class="section-subtitle">아르헨티나 탱고의 본질 — '탱'과 '고'의 철학으로 배우는 고해상도 학습</p>
             </div>
 
-            <div class="curriculum-blocks">
-                <!-- Block 1 -->
-                <div class="cur-block">
-                    <div class="cur-header">
-                        <div class="cur-num">1</div>
-                        <h3>고급반 서는 법</h3>
-                    </div>
-                    <div class="cur-content">
-                        <ul class="cur-list">
-                            <li><strong>10초 스캔 시스템:</strong> 10가지 체크 포인트로 현재 자세의 문제점을 즉각 진단합니다.</li>
-                            <li><strong>에너지 정렬:</strong> 단 10초 만에 서 있는 자세를 교정하여 리드의 선명도를 높입니다.</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Mind Map Image -->
+            <div class="mind-map-container" data-aos="fade-up">
+                <img src="images/tango_mind_map_modi.png" alt="탱고 초중급 커리 마인드 맵" class="mind-map-img">
+                <p style="margin-top: 20px; color: var(--text-muted); font-size: 14px;">※ '탱'과 '고'의 원리부터 초중급 테크닉까지 한눈에 파악하는 전체 구조도입니다.</p>
+            </div>
 
-                <!-- Block 2 -->
-                <div class="cur-block">
-                    <div class="cur-header">
-                        <div class="cur-num">2</div>
-                        <h3>고급반 걷는 법 (대화형 워킹)</h3>
-                    </div>
-                    <div class="cur-content">
-                        <div class="cur-sub-section">
-                            <span class="cur-sub-title">직선 & 곡선 워킹</span>
-                            <ul class="cur-list">
-                                <li><strong>꼬르따도(Cortado):</strong> 좁은 론다에서 에너지를 케어하며 공간을 확보하는 기술.</li>
-                                <li><strong>사까다(Sacada):</strong> 오초 포워드/백워드에 고급 사까다를 적용하는 해상도 높은 응용.</li>
-                                <li><strong>디소시에이션:</strong> 리드 중에도 아도르노와 깐초를 우아하게 연결하는 축 강화법.</li>
-                            </ul>
-                        </div>
-                        <div class="cur-sub-section">
-                            <span class="cur-sub-title">남녀 역할의 디테일</span>
-                            <ul class="cur-list">
-                                <li><strong>여왕처럼 걷는 법:</strong> '걷기'와 '밀리기'의 결정적 차이를 체감하고 우아함을 완성합니다.</li>
-                                <li><strong>리더의 에스코트:</strong> 파트너의 에너지를 해치지 않고 걷기 변주를 유도하는 법.</li>
-                            </ul>
-                        </div>
-                        <div class="cur-sub-section">
-                            <span class="cur-sub-title">리듬 변주</span>
-                            <ul class="cur-list">
-                                <li><strong>꼰뜨라 띠엠뽀 & 트라스삐에:</strong> 실전 밀롱가 활용도가 가장 높은 리듬 걷기 테크닉 <span class="tag-premium">고급</span></li>
-                            </ul>
+            <div class="hierarchy-container">
+                <!-- Level 1: Tang -->
+                <div class="hierarchy-level" data-aos="fade-up">
+                    <div class="hierarchy-title">'탱' (Tang) <span>How to Stand</span></div>
+                    <div class="branch-grid">
+                        <div class="branch-card">
+                            <h4>서는 법 <span class="lang-tag">Postura</span></h4>
+                            <p class="tech-desc">'탱'은 놀이 '얼음 땡'의 '탱'으로, 음악의 확실한 끝맺음을 위해 모두가 동시에 멈추어 서는 '정지(Standing)'의 원리를 의미합니다.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Block 3 -->
-                <div class="cur-block">
-                    <div class="cur-header">
-                        <div class="cur-num">3</div>
-                        <h3>아브라쏘 (Abrazo) & 커넥션</h3>
-                    </div>
-                    <div class="cur-content">
-                        <ul class="cur-list">
-                            <li><strong>쎄라도 & 아비에르또:</strong> 두 아브라쏘의 정확한 전환 시점과 가슴/골반/시선의 튜닝법.</li>
-                            <li><strong>10초 튜닝:</strong> 아브라쏘를 잡는 순간 리더와 팔로워가 체크해야 할 핵심 요소.</li>
-                            <li><strong>대응 전략:</strong> 실전에서 만나는 불편한 아브라쏘에 유연하게 대응하는 법.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Block 4 -->
-                <div class="cur-block">
-                    <div class="cur-header">
-                        <div class="cur-num">4</div>
-                        <h3>핵심 테크닉 (Advanced Tech)</h3>
-                    </div>
-                    <div class="cur-content">
-                        <ul class="cur-list">
-                            <li><strong>끄루세(Cruce):</strong> 아바호/미디오/아리바 3단계 개념과 5배 확장된 활용법.</li>
-                            <li><strong>볼레오 & 깐쵸:</strong> 원심력의 이해를 통한 안전하고 우아한 고급 실행법 <span class="tag-premium">고급</span></li>
-                            <li><strong>메디아 루나:</strong> 호흡 리드와 코어 리드를 통한 부드러운 연결.</li>
-                            <li><strong>히로(Giro):</strong> 론다 전용 히로부터 살롱/공연용 히로까지의 구분.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Block 5 -->
-                <div class="cur-block">
-                    <div class="cur-header">
-                        <div class="cur-num">5</div>
-                        <h3>론다(Ronda) 최적화</h3>
-                    </div>
-                    <div class="cur-content">
-                        <p style="margin-bottom: 24px; color: var(--text-secondary);">밀롱가에서 가장 존경받는 댄서가 되기 위한 공간과 음악의 이해</p>
-                        <div class="ronda-special">
-                            <h4>✦ 론다 전용 최적화 가이드</h4>
-                            <div class="ronda-grid">
-                                <ul class="cur-list">
-                                    <li>타 커플의 공간 존중법</li>
-                                    <li>축과 에너지 보존 기술</li>
-                                    <li>좁은 공간 효율적 운영</li>
-                                </ul>
-                                <ul class="cur-list">
-                                    <li>론다 흐름 타는 법</li>
-                                    <li>음악 퀄리티와 론다의 관계</li>
-                                    <li>까베세오 상관관계 이해</li>
-                                </ul>
+                <!-- Level 2: Go -->
+                <div class="hierarchy-level" data-aos="fade-up">
+                    <div class="hierarchy-title">'고' (Go) <span>How to Walk</span></div>
+                    <div class="branch-grid">
+                        <!-- Straight -->
+                        <div class="branch-card">
+                            <h4>직선으로 걷기 <span class="lang-tag">Caminata Lineal</span></h4>
+                            <div class="sub-branch">
+                                <div class="sub-item">좌우로 걷기 (Lateral)</div>
+                                <div class="sub-item">앞뒤로 걷기 (Frontal / Trasera)
+                                    <div style="margin-left: 20px; margin-top: 5px; opacity: 0.8; font-size: 13px;">
+                                        - 나란히 걷기 (Parallel): 보통 띠엠뽀 / 꼰뜨라 띠엠뽀<br>
+                                        - 엇갈려 걷기 (Crossed)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Curved -->
+                        <div class="branch-card">
+                            <h4>곡선으로 걷기 <span class="lang-tag">Ocho</span></h4>
+                            <div class="sub-branch">
+                                <div class="sub-item">오초 포워드 (Ocho Forward)</div>
+                                <div class="sub-item">오초 백워드 (Ocho Backward)</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Block 6 -->
-                <div class="cur-block">
-                    <div class="cur-header">
-                        <div class="cur-num">6</div>
-                        <h3>피구라 (Figura) 구성</h3>
-                    </div>
-                    <div class="cur-content">
-                        <div class="figura-wrapper">
-                            <table class="figura-table">
-                                <thead>
-                                    <tr>
-                                        <th>카테고리</th>
-                                        <th>학습 목표 및 설명</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="figura-cat">밀롱가 전용</td>
-                                        <td>론다 흐름을 방해하지 않는 실전 지향형 동작</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="figura-cat">밀롱가 + 누에보</td>
-                                        <td>전통과 현대를 넘나드는 유연한 피구라</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="figura-cat">공연 & 에세나리오</td>
-                                        <td>무대 위에서의 확장성과 표현력을 극대화하는 테크닉</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <!-- Level 3: Intermediate -->
+                <div class="hierarchy-level" data-aos="fade-up">
+                    <div class="hierarchy-title">초중급 과정 <span>Intermediate Techniques</span></div>
+                    <div class="tech-grid">
+                        <div class="tech-card">
+                            <span class="tech-term">끄루세 (Cruce)</span>
+                            <p class="tech-desc">여자의 발을 한 축에 나머지 축을 포개는 우아한 교차 동작</p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-term">꼬르따도 (Cortado)</span>
+                            <p class="tech-desc">'Cut'의 의미. 동작을 중간에 끊어 리듬을 변주 (좌우/오초 꼬르따도 등)</p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-term">사까다 (Sacada)</span>
+                            <p class="tech-desc">'내밀다'라는 뜻. 꼬르따도 대신 포워드 스텝으로 상대의 공간에 발을 내미는 동작</p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-term">깐쵸 (Gancho)</span>
+                            <p class="tech-desc">'갈고리'라는 뜻. 사까다보다 높은 위치(무릎 위)를 겨냥해 거는 역동적인 동작</p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-term">히로 (Giro)</span>
+                            <p class="tech-desc">리더를 중심으로 파트너가 원형으로 회전하며 춤의 공간을 확장하는 동작</p>
+                        </div>
+                        <div class="tech-card">
+                            <span class="tech-term">메디오 루나 (Media Luna)</span>
+                            <p class="tech-desc">'반달'이라는 뜻. 히로의 절반(Half Giro)을 수행하는 기술</p>
                         </div>
                     </div>
                 </div>
@@ -802,7 +926,8 @@
                 <div class="inst-info">
                     <span class="hero-label">The Expert</span>
                     <h3>경험이 실력이 되는 7주</h3>
-                    <p>아르헨티나에서의 시작부터 21년간 쌓아온 수천 번의 밀롱가 경험과 10년의 대학 강의 노하우를 단 7주에 압축했습니다. 시행착오를 줄이고 본질로 가는 지름길을 안내합니다.</p>
+                    <p>아르헨티나에서의 시작부터 21년간 쌓아온 수천 번의 밀롱가 경험과 10년의 대학 강의 노하우를 단 7주에 압축했습니다. 시행착오를 줄이고 본질로 가는 지름길을 안내합니다.
+                    </p>
                 </div>
             </div>
         </section>
@@ -832,4 +957,5 @@
         window.onload = reveal;
     </script>
 </body>
+
 </html>
