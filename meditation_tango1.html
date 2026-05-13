@@ -984,6 +984,16 @@
             .scroll-indicator {
                 left: 44px;
             }
+
+            /* Plus Notice Mobile Fix */
+            .plus-notice-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+
+            .plus-notice-inner {
+                padding: 30px 20px !important;
+            }
         }
     </style>
 </head>
@@ -1165,15 +1175,15 @@
             </div>
         </div>
 
-        <!-- 낮 프락 밀롱가 연계 프로그램 안내 -->
+        <!-- 낮 프락 밀롱가 연계 프로그램 안내 (반응형 최적화) -->
         <div class="plus-notice reveal" style="margin-top: 50px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 20px;">
-            <div style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); padding: 40px; text-align: left; position: relative; overflow: hidden;">
+            <div class="plus-notice-inner" style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); padding: 40px; text-align: left; position: relative; overflow: hidden;">
                 <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold);"></div>
                 <h4 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 25px; font-family: 'Noto Serif KR', serif; display: flex; align-items: center; gap: 15px;">
                     <span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.9rem; letter-spacing: 2px;">PLUS PROGRAM</span>
                     낮 프락 밀롱가 (15:00 — 17:00)
                 </h4>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                <div class="plus-notice-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
                     <div>
                         <p style="font-size: 0.8rem; color: var(--gold); margin-bottom: 12px; font-weight: 700; letter-spacing: 1.5px;">[기존 탱고 댄서 안내]</p>
                         <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(245, 240, 232, 0.75);">
