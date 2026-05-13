@@ -735,19 +735,27 @@
             font-weight: 900;
             font-style: italic;
             color: transparent;
-            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.03);
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
             pointer-events: none;
             user-select: none;
             white-space: nowrap;
         }
 
         .cta-eyebrow {
-            font-size: 0.7rem;
-            letter-spacing: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            /* 1. 굵기를 더 굵게 (기본은 300) */
+            letter-spacing: 6px;
+            /* 2. 자간을 조금 더 넓혀서 가독성 확보 */
             text-transform: uppercase;
-            color: var(--red);
+            color: var(--gold);
+            /* 3. 빨간색보다 대비가 강한 금색으로 변경 */
             margin-bottom: 28px;
+            position: relative;
+            z-index: 2;
+            /* 4. 배경 글자보다 확실히 위에 오도록 설정 */
         }
+
 
         .cta-headline {
             font-family: 'Noto Serif KR', serif;
