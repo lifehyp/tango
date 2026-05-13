@@ -986,13 +986,23 @@
             }
 
             /* Plus Notice Mobile Fix */
-            .plus-notice-grid {
-                grid-template-columns: 1fr !important;
-                gap: 30px !important;
+            .plus-notice {
+                padding: 0 10px !important; /* 외부 여백 최소화 */
             }
 
             .plus-notice-inner {
-                padding: 30px 20px !important;
+                padding: 25px 15px !important; /* 내부 여백 최소화 */
+            }
+
+            .plus-notice-inner h4 {
+                flex-direction: column; /* 제목 요소를 세로로 배치 */
+                align-items: flex-start !important;
+                gap: 8px !important;
+            }
+
+            .plus-notice-grid {
+                grid-template-columns: 1fr !important;
+                gap: 25px !important;
             }
         }
     </style>
