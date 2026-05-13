@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명상 탱고 — 나를 만나는 여정</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #080808;
+            --ink: #111111;
+            --wine: #8C1C1C;
+            --red: #C0392B;
+            --gold: #D4AF37;
+            --cream: #F5F0E8;
+            --smoke: #BDBDBD;
+            --white: #FFFFFF;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--cream);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Noise grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: 9990;
+            opacity: 0.6;
+        }
+
+        /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0;
+        }
+
+        /* Animated radial background blobs */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(140, 28, 28, 0.25) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 80% at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+                var(--black);
+            animation: bgPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            from {
+                opacity: 0.8;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Large decorative letter */
+        .hero-deco {
+            position: absolute;
+            right: -2%;
+            top: 50%;
+            transform: translateY(-55%);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(280px, 35vw, 500px);
+            font-weight: 900;
+            font-style: italic;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(212, 175, 55, 0.12);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            animation: floatDeco 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatDeco {
+            from {
+                transform: translateY(-55%) rotate(-2deg);
+            }
+
+            to {
+                transform: translateY(-50%) rotate(-1deg);
+            }
+        }
+
+        /* Horizontal red stripe */
+        .hero-stripe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 0%, var(--wine) 30%, var(--red) 60%, transparent 100%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            padding: 120px 80px 120px 100px;
+            max-width: 900px;
+        }
+
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 36px;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .hero-eyebrow span {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(54px, 8vw, 110px);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.4s;
+        }
+
+        .hero-title em {
+            display: block;
+            font-style: italic;
+            color: var(--red);
+        }
+
+        .hero-title-kr {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(22px, 3vw, 38px);
+            font-weight: 300;
+            letter-spacing: 8px;
+            color: var(--smoke);
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.6s;
+        }
+
+        .hero-desc {
+            font-size: clamp(14px, 1.4vw, 18px);
+            line-height: 2;
+            color: rgba(245, 240, 232, 0.7);
+            max-width: 480px;
+            border-left: 2px solid var(--wine);
+            padding-left: 24px;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 0.8s;
+        }
+
+        .hero-cta-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease forwards 1s;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--red);
+            color: #fff;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 18px 36px;
+            border-radius: 2px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s ease, transform 0.2s ease;
+            cursor: none;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--wine);
+            transform: translateX(-101%);
+            transition: transform 0.4s cubic-bezier(.77, 0, .175, 1);
+        }
+
+        .btn-primary:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary span,
+        .btn-primary svg {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--smoke);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(189, 189, 189, 0.3);
+            padding-bottom: 4px;
+            transition: color 0.3s, border-color 0.3s;
+            cursor: none;
+        }
+
+        .btn-ghost:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 100px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.4);
+            opacity: 0;
+            animation: fadeUp 1s ease forwards 1.4s;
+        }
+
+        .scroll-line {
+            width: 60px;
+            height: 1px;
+            background: rgba(245, 240, 232, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gold);
+            animation: scrollLine 2s ease-in-out infinite 1.4s;
+        }
+
+        @keyframes scrollLine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ══════════════════════════════
+       MARQUEE BAND
+    ══════════════════════════════ */
+        .marquee-band {
+            overflow: hidden;
+            background: var(--red);
+            padding: 14px 0;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: inline-flex;
+            animation: marqueeScroll 18s linear infinite;
+        }
+
+        .marquee-item {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 0 40px;
+        }
+
+        .marquee-dot {
+            color: rgba(255, 255, 255, 0.4);
+            padding: 0 10px;
+        }
+
+        @keyframes marqueeScroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ══════════════════════════════
+       FOR WHOM SECTION
+    ══════════════════════════════ */
+        .for-whom {
+            padding: 140px 80px;
+            position: relative;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 100px;
+            gap: 40px;
+        }
+
+        .section-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            transform: rotate(180deg);
+            padding-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .section-heading {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(36px, 5vw, 68px);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -1px;
+        }
+
+        .section-heading em {
+            font-style: italic;
+            color: var(--red);
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Card grid — staggered layout */
+        .cards-grid {
+            display: grid;
+            gap: 2px;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            position: relative;
+            transition: background 0.4s ease;
+            cursor: none;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(140, 28, 28, 0.0) 0%, rgba(140, 28, 28, 0.08) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card:last-child {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(80px, 10vw, 130px);
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.04);
+            line-height: 1;
+            padding: 40px 30px 40px 0;
+            align-self: center;
+            width: 130px;
+            text-align: right;
+            transition: color 0.4s ease;
+        }
+
+        .card:hover .card-num {
+            color: rgba(192, 57, 43, 0.12);
+        }
+
+        .card-body {
+            padding: 50px 40px 50px 40px;
+            border-left: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 4px 12px;
+            border-radius: 1px;
+        }
+
+        .card-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(18px, 2.2vw, 28px);
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            transition: color 0.3s;
+        }
+
+        .card:hover .card-title {
+            color: #fff;
+        }
+
+        .card-text {
+            font-size: clamp(13px, 1.1vw, 15px);
+            line-height: 1.95;
+            color: rgba(245, 240, 232, 0.55);
+            max-width: 520px;
+        }
+
+        /* ══════════════════════════════
+       QUOTE INTERLUDE
+    ══════════════════════════════ */
+        .quote-section {
+            position: relative;
+            padding: 120px 80px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(140, 28, 28, 0.15) 0%, transparent 70%);
+        }
+
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 200px;
+            font-weight: 900;
+            color: rgba(212, 175, 55, 0.08);
+            line-height: 0.6;
+            display: block;
+            margin-bottom: -30px;
+        }
+
+        .quote-text {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(22px, 3.5vw, 42px);
+            font-weight: 300;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.5px;
+        }
+
+        .quote-text strong {
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .quote-sub {
+            margin-top: 32px;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.35);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ══════════════════════════════
+       INFO / PRICING
+    ══════════════════════════════ */
+        .info-section {
+            padding: 0 80px 140px;
+        }
+
+        .info-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .info-panel {
+            padding: 60px 50px;
+            background: var(--ink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--wine), var(--red));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(.77, 0, .175, 1);
+        }
+
+        .info-panel:hover::before {
+            transform: scaleX(1);
+        }
+
+        .info-panel-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .info-panel-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(212, 175, 55, 0.25);
+        }
+
+        .info-detail-row {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-item-key {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.35);
+        }
+
+        .info-item-val {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(15px, 1.5vw, 18px);
+            font-weight: 400;
+            color: var(--cream);
+        }
+
+        .price-row {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .price-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: rgba(245, 240, 232, 0.6);
+        }
+
+        .price-amount {
+            text-align: right;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            font-size: 0.85rem;
+            color: rgba(245, 240, 232, 0.25);
+            display: block;
+        }
+
+        .price-new-val {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 3vw, 42px);
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -1px;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: var(--red);
+            color: #fff;
+            font-size: 0.65rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            margin-left: 10px;
+            border-radius: 2px;
+            vertical-align: middle;
+        }
+
+        /* ══════════════════════════════
+       FINAL CTA
+    ══════════════════════════════ */
+        .cta-section {
+            position: relative;
+            padding: 160px 80px;
+            text-align: center;
+            overflow: hidden;
+            background: var(--ink);
+        }
+
+        .cta-bg-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(100px, 18vw, 260px);
+            font-weight: 900;
+            font-style: italic;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .cta-eyebrow {
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 28px;
+        }
+
+        .cta-headline {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(28px, 4vw, 56px);
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .cta-sub {
+            font-size: clamp(14px, 1.3vw, 17px);
+            color: rgba(245, 240, 232, 0.5);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .btn-big {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--red);
+            color: #fff;
+            font-size: clamp(14px, 1.2vw, 17px);
+            font-weight: 500;
+            padding: 22px 40px;
+            border-radius: 2px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: none;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-big::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(.77, 0, .175, 1);
+        }
+
+        .btn-big:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-big:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-big span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(245, 240, 232, 0.6);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 1px solid rgba(245, 240, 232, 0.2);
+            padding: 20px 36px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .btn-outline:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+        footer {
+            background: var(--black);
+            padding: 40px 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: rgba(245, 240, 232, 0.4);
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, 0.35);
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ══════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.35s;
+        }
+
+        /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+        @media (max-width: 768px) {
+            .hero-inner {
+                padding: 100px 30px 100px 44px;
+            }
+
+            .hero-deco {
+                display: none;
+            }
+
+            .for-whom {
+                padding: 80px 24px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                margin-bottom: 60px;
+            }
+
+            .section-label {
+                writing-mode: horizontal-tb;
+                transform: none;
+            }
+
+            .card {
+                grid-template-columns: 1fr;
+            }
+
+            .card-num {
+                display: none;
+            }
+
+            .card-body {
+                padding: 40px 24px;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .info-section {
+                padding: 0 24px 80px;
+            }
+
+            .info-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 100px 24px;
+            }
+
+            .quote-section {
+                padding: 80px 24px;
+            }
+
+            footer {
+                padding: 30px 24px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .hero-cta-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .scroll-indicator {
+                left: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-stripe"></div>
+        <div class="hero-deco">T</div>
+
+        <div class="hero-inner">
+            <div class="hero-eyebrow">
+                <span>Tango Meditation · 2025</span>
+            </div>
+            <h1 class="hero-title">
+                Move.<br>
+                <em>Breathe.</em><br>
+                Discover.
+            </h1>
+            <p class="hero-title-kr">명상 탱고 — 나를 만나는 여정</p>
+            <p class="hero-desc">
+                걸을 수 있으면 누구나 할 수 있습니다.<br>
+                춤이 아닙니다. 스텝도 없습니다.<br>
+                오직 당신 자신과의 깊은 대화입니다.
+            </p>
+            <div class="hero-cta-row">
+                <a href="https://forms.gle/roqnzuwXinJawgx47" target="_blank" class="btn-primary">
+                    <span>지금 신청하기</span>
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <a href="https://open.kakao.com/me/meditango" target="_blank" class="btn-ghost">카카오톡 문의</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ═══════ MARQUEE ═══════ -->
+    <div class="marquee-band" aria-hidden="true">
+        <div class="marquee-inner">
+            <span class="marquee-item">멘탈 웰니스</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">움직이는 위빠사나</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">에너지 공명</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">아브라쏘의 치유</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">내면의 탐험</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">순수한 교감</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Mental Wellness</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Moving Vipassana</span><span class="marquee-dot">✦</span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee-item">멘탈 웰니스</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">움직이는 위빠사나</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">에너지 공명</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">아브라쏘의 치유</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">내면의 탐험</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">순수한 교감</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Mental Wellness</span><span class="marquee-dot">✦</span>
+            <span class="marquee-item">Moving Vipassana</span><span class="marquee-dot">✦</span>
+        </div>
+    </div>
+
+    <!-- ═══════ FOR WHOM ═══════ -->
+    <section class="for-whom">
+        <div class="section-header reveal">
+            <div class="section-label">For Whom</div>
+            <h2 class="section-heading">
+                당신을<br>
+                위한<br>
+                시간<em>.</em>
+            </h2>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Card 1 -->
+            <div class="card reveal reveal-delay-1">
+                <div class="card-num">01</div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        <span class="tag">#휴식</span>
+                        <span class="tag">#멘탈웰니스</span>
+                    </div>
+                    <h3 class="card-title">스텝을 외우지 마세요.<br>그냥 편안하게 걸으면 됩니다.</h3>
+                    <p class="card-text">복잡한 현대 생활 속, 혼자만의 고요함이 필요하신가요? 명상 탱고는 춤을 배우는 곳이 아닙니다. 매회 달라지는 주제를 통해 나의 건강, 부,
+                        인연 등 원하는 소원과 목적을 시각화하고 달성하도록 돕는 멘탈 웰니스 프로그램입니다.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card reveal reveal-delay-2">
+                <div class="card-num">02</div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        <span class="tag">#움직이는위빠사나</span>
+                        <span class="tag">#에너지공명</span>
+                    </div>
+                    <h3 class="card-title">가만히 앉아있는 명상이<br>답답하게 느껴질 때.</h3>
+                    <p class="card-text">명상 탱고는 새로운 차원의 명상 방법입니다. 커플이 상호 몰입하여 걷는 과정 속에서 자연스럽게 에너지를 공유하고, '움직이는 위빠사나'를
+                        경험해 보세요. 파트너와의 호흡을 통해 내면의 세계를 더 선명하게 탐색할 수 있습니다.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card reveal reveal-delay-3">
+                <div class="card-num">03</div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        <span class="tag">#아브라쏘</span>
+                        <span class="tag">#순수한교감</span>
+                    </div>
+                    <h3 class="card-title">복잡한 피구라를 내려놓고,<br>온전한 아브라쏘로.</h3>
+                    <p class="card-text">누구에게 보여주기 위한 화려한 무대도, 잘 춰야 한다는 압박감도 없습니다. 그저 상대방의 따뜻한 호흡에 내 마음을 가만히 얹어보세요. 여러분이
+                        처음 탱고를 사랑하게 되었던 '연결의 감각'을 치유의 형태로 되돌려 드립니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ QUOTE INTERLUDE ═══════ -->
+    <section class="quote-section reveal">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">
+            걸을 수 있으면<br>
+            <strong>누구나</strong> 함께 할 수 있습니다.
+        </p>
+        <p class="quote-sub">Meditation Tango·명상 탱고</p>
+    </section>
+
+    <!-- ═══════ INFO / PRICING ═══════ -->
+    <section class="info-section">
+        <div class="info-wrapper reveal">
+            <div class="info-panel">
+                <div class="info-panel-label">일시 및 장소</div>
+                <div class="info-detail-row">
+                    <div class="info-item">
+                        <span class="info-item-key">개강일</span>
+                        <span class="info-item-val">6월 5일 (금) 개강</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-item-key">정기 일정</span>
+                        <span class="info-item-val">매주 금요일 오후 2:00 — 3:00</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-item-key">장소</span>
+                        <span class="info-item-val">홍대.피스타 (탱고 밀롱가)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="info-panel">
+                <div class="info-panel-label">1기 서포터즈 특별 혜택</div>
+                <div class="price-row">
+                    <div class="price-item">
+                        <div>
+                            <span class="price-label">1회 체험</span>
+                            <span class="price-badge">89% 할인</span>
+                        </div>
+                        <div class="price-amount">
+                            <span class="price-old">₩10,000</span>
+                            <span class="price-new-val">₩3,000</span>
+                        </div>
+                    </div>
+                    <div class="price-item">
+                        <div>
+                            <span class="price-label">4회 정기권</span>
+                            <span class="price-badge">75% 할인</span>
+                        </div>
+                        <div class="price-amount">
+                            <span class="price-old">₩40,000</span>
+                            <span class="price-new-val">₩10,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ FINAL CTA ═══════ -->
+    <section class="cta-section">
+        <div class="cta-bg-text" aria-hidden="true">Begin</div>
+        <p class="cta-eyebrow reveal">지금 시작하세요</p>
+        <h2 class="cta-headline reveal reveal-delay-1">
+            당신이 이루고 싶은<br>소원은 무엇인가요?
+        </h2>
+        <p class="cta-sub reveal reveal-delay-2">건강 · 부 · 성공 · 인연</p>
+        <div class="cta-buttons reveal reveal-delay-3">
+            <a href="https://forms.gle/i56bvVPdpjWrmstP6" target="_blank" class="btn-big">
+                <span>명상 탱고, 첫 걸음으로 소원의 문 열기</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </a>
+            <a href="https://blog.naver.com/lovehyp/223446525342" target="_blank" class="btn-outline">블로그 상세보기</a>
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer>
+        <div class="footer-brand">Meditation Tango - 명상 탱고</div>
+        <nav class="footer-links">
+            <a href="https://forms.gle/i56bvVPdpjWrmstP6" target="_blank">신청하기</a>
+            <a href="https://open.kakao.com/me/meditango" target="_blank">카카오톡</a>
+            <a href="https://blog.naver.com/lovehyp/223446525342" target="_blank">블로그</a>
+        </nav>
+    </footer>
+
+    <script>
+        // ─── Custom Cursor ───
+        const cursor = document.getElementById('cursor');
+        const trail = document.getElementById('cursorTrail');
+        let tx = 0, ty = 0, cx = 0, cy = 0;
+
+        document.addEventListener('mousemove', e => {
+            tx = e.clientX; ty = e.clientY;
+            cursor.style.left = tx + 'px';
+            cursor.style.top = ty + 'px';
+        });
+
+        function animateTrail() {
+            cx += (tx - cx) * 0.12;
+            cy += (ty - cy) * 0.12;
+            trail.style.left = cx + 'px';
+            trail.style.top = cy + 'px';
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+
+        document.querySelectorAll('a, .card').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+                trail.style.opacity = '0.5';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                trail.style.opacity = '1';
+            });
+        });
+
+        // ─── Scroll Reveal ───
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
