@@ -987,7 +987,8 @@
 
             /* Plus Notice Mobile Fix */
             .info-section {
-                padding: 0 10px 80px !important; /* 외부 섹션 여백 최소화 */
+                padding: 0 10px 80px !important;
+                /* 외부 섹션 여백 최소화 */
             }
 
             .plus-notice {
@@ -996,14 +997,16 @@
             }
 
             .plus-notice-inner {
-                padding: 30px 15px !important; /* 내부 여백 최소화 */
+                padding: 30px 15px !important;
+                /* 내부 여백 최소화 */
             }
 
             .plus-notice-inner h4 {
                 flex-direction: column;
                 align-items: flex-start !important;
                 gap: 10px !important;
-                font-size: 1.15rem !important; /* 모바일 제목 크기 최적화 */
+                font-size: 1.15rem !important;
+                /* 모바일 제목 크기 최적화 */
             }
 
             .hero-title-kr {
@@ -1052,12 +1055,14 @@
             </p>
             <div class="hero-cta-row">
                 <!-- 상단에서 바로 신청하지 않고 내용을 읽도록 유도 -->
-                <a href="#details" class="btn-ghost" style="color: var(--gold); border-color: var(--gold); font-weight: 500;">
+                <a href="#details" class="btn-ghost"
+                    style="color: var(--gold); border-color: var(--gold); font-weight: 500;">
                     프로그램 상세 내용 보기 ↓
                 </a>
                 <a href="https://open.kakao.com/me/meditango" target="_blank" class="btn-ghost">카카오톡 문의</a>
             </div>
-            <p style="font-size: 0.8rem; color: rgba(245, 240, 232, 0.4); margin-top: 20px; letter-spacing: 1.5px; font-weight: 300;">
+            <p
+                style="font-size: 0.8rem; color: rgba(245, 240, 232, 0.4); margin-top: 20px; letter-spacing: 1.5px; font-weight: 300;">
                 * 나를 위한 고요한 60분, 그 여정을 아래에서 확인해 보세요.
             </p>
         </div>
@@ -1197,33 +1202,48 @@
                             <span class="price-old">₩40,000</span>
                             <span class="price-new-val">₩10,000</span>
                         </div>
-            </div>
-        </div>
-
-        <!-- 낮 프락 밀롱가 연계 프로그램 안내 (반응형 최적화) -->
-        <div class="plus-notice reveal" style="margin-top: 50px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 20px;">
-            <div class="plus-notice-inner" style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); padding: 40px; text-align: left; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold);"></div>
-                <h4 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 25px; font-family: 'Noto Serif KR', serif; display: flex; align-items: center; gap: 15px;">
-                    <span style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.9rem; letter-spacing: 2px;">PLUS PROGRAM</span>
-                    낮 프락 밀롱가 (15:00 — 17:00)
-                </h4>
-                <div class="plus-notice-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                    <div>
-                        <p style="font-size: 0.8rem; color: var(--gold); margin-bottom: 12px; font-weight: 700; letter-spacing: 1.5px;">[기존 탱고 댄서 안내]</p>
-                        <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(245, 240, 232, 0.75);">
-                            이미 탱고를 즐기고 계신가요? 명상 탱고(14시)와 이어지는 낮 프락 밀롱가(15시)를 함께 즐기시는 <strong>패키지 결제(13,000원)</strong>가 가능합니다. 현장에서 확인 후 바로 참여하실 수 있습니다. <span style="font-size: 0.85rem; opacity: 0.6;">(프락만 단독 참여 시 10,000원)</span>
-                        </p>
-                    </div>
-                    <div>
-                        <p style="font-size: 0.8rem; color: var(--gold); margin-bottom: 12px; font-weight: 700; letter-spacing: 1.5px;">[일반인 / 입문자 혜택]</p>
-                        <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(245, 240, 232, 0.75);">
-                            탱고를 전혀 추지 못해도 괜찮습니다. 명상 수업이 끝난 후 오후 5시까지 진행되는 <strong>낮 프락 밀롱가를 자유롭게 참관</strong>하실 수 있습니다. 방금 배운 '내면의 연결'이 어떻게 아름다운 춤으로 피어나는지 현장에서 직접 느껴보세요.
-                        </p>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <!-- 낮 프락 밀롱가 연계 프로그램 안내 (반응형 최적화) -->
+                <div class="plus-notice reveal"
+                    style="margin-top: 50px; max-width: 1100px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+                    <div class="plus-notice-inner"
+                        style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.15); padding: 40px; text-align: left; position: relative; overflow: hidden;">
+                        <div
+                            style="position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold);">
+                        </div>
+                        <h4
+                            style="color: var(--gold); font-size: 1.3rem; margin-bottom: 25px; font-family: 'Noto Serif KR', serif; display: flex; align-items: center; gap: 15px;">
+                            <span
+                                style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.9rem; letter-spacing: 2px;">PLUS
+                                PROGRAM</span>
+                            낮 프락 밀롱가 (15:00 — 17:00)
+                        </h4>
+                        <div class="plus-notice-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                            <div>
+                                <p
+                                    style="font-size: 0.8rem; color: var(--gold); margin-bottom: 12px; font-weight: 700; letter-spacing: 1.5px;">
+                                    [기존 탱고 댄서 안내]</p>
+                                <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(245, 240, 232, 0.75);">
+                                    이미 탱고를 즐기고 계신가요? 명상 탱고(14시)와 이어지는 낮 프락 밀롱가(15시)를 함께 즐기시는 <strong>패키지
+                                        결제(13,000원)</strong>가 가능합니다. 현장에서 확인 후 바로 참여하실 수 있습니다. <span
+                                        style="font-size: 0.85rem; opacity: 0.6;">(프락만 단독 참여 시 10,000원)</span>
+                                </p>
+                            </div>
+                            <div>
+                                <p
+                                    style="font-size: 0.8rem; color: var(--gold); margin-bottom: 12px; font-weight: 700; letter-spacing: 1.5px;">
+                                    [일반인 / 입문자 혜택]</p>
+                                <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(245, 240, 232, 0.75);">
+                                    탱고를 전혀 추지 못해도 괜찮습니다. 명상 수업이 끝난 후 오후 5시까지 진행되는 <strong>낮 프락 밀롱가를 자유롭게 참관</strong>하실 수
+                                    있습니다. 방금 배운 '내면의 연결'이 어떻게 아름다운 춤으로 피어나는지 현장에서 직접 느껴보세요.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     </section>
 
     <!-- ═══════ FINAL CTA ═══════ -->
@@ -1234,6 +1254,27 @@
             당신이 이루고 싶은<br>소원은 무엇인가요?
         </h2>
         <p class="cta-sub reveal reveal-delay-2">건강 · 부 · 성공 · 인연</p>
+
+        <!-- 특별 혜택 박스 추가 -->
+        <div class="special-gift-box reveal reveal-delay-2"
+            style="background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 12px; padding: 30px 20px; margin: 40px auto; max-width: 550px; text-align: center; position: relative;">
+            <div
+                style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gold, #d4af37); color: #0a0a0a; padding: 6px 18px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1.5px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                🎁 오픈 기념 특별 혜택</div>
+            <p
+                style="color: var(--gold, #d4af37); font-size: 1.15rem; margin-top: 10px; margin-bottom: 15px; font-weight: 400; font-family: 'Noto Serif KR', serif; line-height: 1.5;">
+                매회 <strong
+                    style="font-size: 1.35rem; font-weight: 700; border-bottom: 1px solid rgba(212, 175, 55, 0.5); padding-bottom: 2px;">6만
+                    원 상당</strong>의<br>맞춤형 암시 스크립트 전원 증정
+            </p>
+            <p
+                style="font-size: 0.95rem; color: rgba(245, 240, 232, 0.8); line-height: 1.8; font-weight: 300; letter-spacing: 0.5px;">
+                탱고 걷기의 교감 몰입으로 생성된 의식 에너지는<br>
+                우리의 몸과 마음을 치유하는 건강 테라피가 됩니다.<br>
+                <strong>건강 테파리피 전용 암시 스크립트</strong>가 매회 함께 제공됩니다.
+            </p>
+        </div>
+
         <div class="cta-buttons reveal reveal-delay-3">
             <a href="https://forms.gle/i56bvVPdpjWrmstP6" target="_blank" class="btn-big">
                 <span>명상 탱고, 첫 걸음으로 소원의 문 열기</span>
